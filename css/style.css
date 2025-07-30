@@ -1,0 +1,227 @@
+/* Variáveis de Cores */
+:root {
+    --color-primary: #007bff; /* Azul */
+    --color-secondary: #6c757d; /* Cinza */
+    --color-dark: #212529; /* Preto */
+    --color-light: #f8f9fa; /* Branco */
+    --color-background-rustic: #495057; /* Cinza escuro para rusticidade */
+    --font-family-modern: 'Roboto', sans-serif;
+    --font-family-rustic: 'Oswald', sans-serif; /* Exemplo de fonte mais robusta/rústica */
+}
+
+/* Importar fontes do Google Fonts (opcional, adicione no HTML ou aqui) */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-modern);
+    line-height: 1.6;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.main-header {
+    background-color: var(--color-dark); /* Fundo preto para o cabeçalho */
+    color: var(--color-light);
+    padding: 1rem 0;
+    border-bottom: 5px solid var(--color-primary); /* Detalhe azul */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header h1 {
+    font-family: var(--font-family-rustic); /* Fonte mais robusta para o título */
+    font-size: 2.5rem;
+    color: var(--color-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 20px;
+}
+
+.main-nav ul li a {
+    color: var(--color-light);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 3px;
+}
+
+.main-nav ul li a:hover {
+    color: var(--color-primary);
+    background-color: var(--color-background-rustic); /* Um toque de rusticidade no hover */
+}
+
+/* Main Content */
+.main-content {
+    padding: 30px 0;
+}
+
+h2 {
+    font-family: var(--font-family-rustic);
+    font-size: 2rem;
+    color: var(--color-dark);
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+}
+
+h2::after { /* Linha rústica abaixo do título */
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primary);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.dashboard {
+    background-color: var(--color-background-rustic); /* Fundo rústico para o dashboard */
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+    color: var(--color-light); /* Cor da fonte para contrastar com o fundo rústico */
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--color-dark); /* Cartões em preto */
+    padding: 25px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-secondary); /* Borda sutil */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+}
+
+.card h3 {
+    font-family: var(--font-family-rustic);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--color-primary); /* Título do cartão em azul */
+    text-transform: uppercase;
+}
+
+.card .data-value {
+    font-family: var(--font-family-modern);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color-light); /* Valor em branco */
+}
+
+.recent-activities {
+    background-color: var(--color-light);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-secondary);
+}
+
+.recent-activities ul {
+    list-style: none;
+}
+
+.recent-activities ul li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--color-secondary); /* Linha tracejada para rusticidade */
+    color: var(--color-dark);
+}
+
+.recent-activities ul li:last-child {
+    border-bottom: none;
+}
+
+.activity-time {
+    font-weight: bold;
+    color: var(--color-primary); /* Tempo em azul */
+    margin-right: 10px;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--color-dark);
+    color: var(--color-secondary); /* Texto do footer em cinza */
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 40px;
+    border-top: 5px solid var(--color-primary);
+}
+
+/* Estilos para um visual masculino e robusto */
+button, input[type="submit"] {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+    transform: translateY(-2px);
+}
+
+/* Media Queries para Responsividade (opcional, mas recomendado) */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main-nav ul li {
+        margin: 5px 10px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
