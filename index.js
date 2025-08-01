@@ -23,9 +23,10 @@ app.get("/teste1",function(req,res){
     res.send("<h1>Sistema em funcionamento ... <h1>");
 });
 
-
-
-//----- -----
+//----- Interfaces -----
+app.get("/",(req,res)=>{
+    res.render("index");
+});
 
 //----- -----
 
