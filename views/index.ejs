@@ -3,63 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oficina Mecânica - Sistema de Gestão</title>
+    <title>Oficina Mecânica Alpha</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="main-header">
-        <div class="container">
-            <h1>Oficina Mecânica</h1>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Veículos</a></li>
-                    <li><a href="#">Serviços</a></li>
-                    <li><a href="#">Orçamentos</a></li>
-                    <li><a href="#">Relatórios</a></li>
-                </ul>
-            </nav>
+
+    <nav class="navbar">
+        <div class="login-form-container">
+            <form action="/login" method="POST" class="login-form">
+                <input type="text" name="username" placeholder="Usuário" required>
+                <input type="password" name="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Sua Caranga em Mãos Profissionais</h1>
+            <p>Confiança, qualidade e serviço de primeira para o seu veículo.</p>
+            <a href="#services" class="cta-button">Veja Nossos Serviços</a>
         </div>
     </header>
 
-    <main class="main-content container">
-        <section class="dashboard">
-            <h2>Dashboard</h2>
-            <div class="card-grid">
+    <main>
+        <section id="services" class="services">
+            <h2>Nossos Serviços</h2>
+            <div class="service-cards-container">
                 <div class="card">
-                    <h3>Total de Clientes</h3>
-                    <p class="data-value">250</p>
+                    <h3>Revisão Completa</h3>
+                    <p>Mantenha seu carro em perfeito estado com nossa revisão detalhada.</p>
                 </div>
                 <div class="card">
-                    <h3>Veículos em Serviço</h3>
-                    <p class="data-value">15</p>
+                    <h3>Troca de Óleo e Filtro</h3>
+                    <p>Serviço rápido e eficiente para a vida útil do seu motor.</p>
                 </div>
                 <div class="card">
-                    <h3>Serviços Concluídos Hoje</h3>
-                    <p class="data-value">5</p>
+                    <h3>Freios e Suspensão</h3>
+                    <p>Garanta sua segurança com a manutenção de alta qualidade.</p>
                 </div>
                 <div class="card">
-                    <h3>Faturamento Mensal</h3>
-                    <p class="data-value">R$ 15.000,00</p>
+                    <h3>Diagnóstico Computadorizado</h3>
+                    <p>Identificamos e resolvemos problemas eletrônicos com precisão.</p>
                 </div>
+
+                <div class="card">
+                    <h3>Últimas notícias</h3>
+                    <p>Preste atenção nas nossas promoções e novidades <b>BLOG!!!</b>.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Veículos a entregar</h3>
+
+                        <% if (veiculos && veiculos.length > 0) { %>
+                            <ul>
+                            <% veiculos.forEach(veiculo => { %>
+                                <li style="text-align: left;"><%= veiculo.marca %> - <%= veiculo.modelo %>, placa <%= veiculo.placa%></li>
+                            <% }) %>
+                            </ul>
+                        <% } else { %>
+                            <p>Nenhum veículo pronto para entrega.</p>
+                        <% } %>
+                    
+                </div>                
             </div>
         </section>
 
-        <section class="recent-activities">
-            <h2>Atividades Recentes</h2>
-            <ul>
-                <li><span class="activity-time">10:30</span> - Orçamento aprovado para **João Silva** (Ford Ka)</li>
-                <li><span class="activity-time">09:45</span> - Início de serviço: troca de óleo em **Maria Oliveira** (VW Gol)</li>
-                <li><span class="activity-time">08:15</span> - Novo cadastro de cliente: **Carlos Souza**</li>
-            </ul>
+        <section id="contact" class="contact">
+            <h2>Agende seu Serviço</h2>
+            <form action="/contact" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Seu Nome" required>
+                <input type="tel" name="phone" placeholder="Seu Telefone" required>
+                <input type="email" name="email" placeholder="Seu E-mail">
+                <textarea name="message" placeholder="Qual serviço você precisa?" rows="4"></textarea>
+                <button type="submit">Agendar Agora</button>
+            </form>
         </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025 Oficina Mecânica. Todos os direitos reservados.</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2025 Oficina Mecânica Alpha. Todos os direitos reservados.</p>
     </footer>
+
 </body>
 </html>

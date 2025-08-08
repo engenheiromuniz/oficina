@@ -1,241 +1,249 @@
-/* Variáveis de Cores */
-:root {
-    --color-primary: #007bff; /* Azul vibrante para detalhes e destaque */
-    --color-secondary: #6c757d; /* Cinza para textos secundários e bordas */
-    --color-dark: #212529; /* Preto para cabeçalho e fundos */
-    --color-light: #f8f9fa; /* Branco para cartões e texto em fundos escuros */
-    --color-background-dashboard: #e9ecef; /* Cinza um pouco mais claro para o dashboard */
-    --font-family-modern: 'Roboto', sans-serif;
-    --font-family-rustic: 'Oswald', sans-serif;
-}
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 
-/* Importar fontes do Google Fonts (recomendado) */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
-
-/* Reset Básico */
-* {
+/* Estilos gerais */
+body {
+    font-family: 'Oswald', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-family-modern);
+    background-color: #f0f0f5; /* Cinza levemente mais claro */
+    color: #333;
     line-height: 1.6;
-    background-color: var(--color-light);
-    color: var(--color-dark);
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+h1, h2, h3 {
+    font-weight: 700;
 }
 
-/* Header */
-.main-header {
-    background-color: var(--color-dark);
-    color: var(--color-light);
-    padding: 1rem 0;
-    border-bottom: 5px solid var(--color-primary);
+/* --- NAVBAR E FORMULÁRIO DE LOGIN --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    z-index: 1000;
 }
 
-.main-header .container {
+.login-form-container {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente escuro */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login-form {
     display: flex;
-    justify-content: space-between;
+    gap: 5px;
     align-items: center;
 }
 
-.main-header h1 {
-    font-family: var(--font-family-rustic);
-    font-size: 2.5rem;
-    color: var(--color-light);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.main-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-.main-nav ul li {
-    margin-left: 20px;
-}
-
-.main-nav ul li a {
-    color: var(--color-light);
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: color 0.3s ease;
+.login-form input {
+    padding: 5px 8px;
+    border: 1px solid #555;
     border-radius: 3px;
+    background-color: #fff;
+    color: #fff;
+    font-size: 0.8em;
+    width: 100px;
 }
 
-.main-nav ul li a:hover {
-    color: var(--color-primary);
+.login-form button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.8em;
 }
 
-/* Main Content */
-.main-content {
-    padding: 30px 0;
+.login-form button:hover {
+    background-color: #0056b3;
 }
 
-.dashboard {
-    /* Fundo do dashboard agora é um cinza ligeiramente mais claro */
-    background-color: var(--color-background-dashboard);
-    padding: 30px;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: var(--color-dark);
-}
-
-h2 {
-    font-family: var(--font-family-rustic);
-    font-size: 2rem;
-    /* A cor do título "Dashboard" agora é preta para maior contraste no fundo claro */
-    color: var(--color-dark); 
-    margin-bottom: 20px;
+/* --- HERO SECTION (Topo da página) --- */
+.hero {
+    /* **Alteração:** Usando a nova imagem de fundo */
+    background: url('../img/fundo.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
     text-align: center;
-    text-transform: uppercase;
     position: relative;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
 }
 
-/* A linha abaixo do h2 agora é cinza para harmonizar com o novo fundo */
-h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: var(--color-secondary);
-    margin: 10px auto 0;
-    border-radius: 2px;
+.hero-content {
+    max-width: 800px;
+    margin-top: -50px;
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 1.5em;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- SEÇÃO DE SERVIÇOS --- */
+.services {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.services h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.service-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
 .card {
-    /* O fundo dos cartões agora é branco */
-    background-color: var(--color-light);
-    padding: 25px;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--color-secondary);
-    transition: transform 0.3s ease;
-    /* Adiciona uma transição para a sombra */
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    /* Sombra mais pronunciada no hover para um efeito moderno */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card h3 {
-    font-family: var(--font-family-rustic);
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    /* Título do cartão em azul para destaque */
-    color: var(--color-primary);
-    text-transform: uppercase;
+    color: #84d262;
+    margin-top: 0;
 }
 
-.card .data-value {
-    font-family: var(--font-family-modern);
-    font-size: 2.5rem;
-    font-weight: bold;
-    /* Valor em preto para contraste com o fundo branco do cartão */
-    color: var(--color-dark);
+.card p {
+    font-size: 1em;
+    color: #ccc;
 }
 
-.recent-activities {
-    background-color: var(--color-light);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--color-secondary);
-}
-
-.recent-activities h2 {
-    /* A palavra "Atividades Recentes" agora está em preto para o fundo branco */
-    color: var(--color-dark);
-}
-
-.recent-activities ul {
-    list-style: none;
-}
-
-.recent-activities ul li {
-    padding: 10px 0;
-    border-bottom: 1px dashed var(--color-secondary);
-    color: var(--color-dark);
-}
-
-.recent-activities ul li:last-child {
-    border-bottom: none;
-}
-
-.activity-time {
-    font-weight: bold;
-    color: var(--color-primary);
-    margin-right: 10px;
-}
-
-/* Footer */
-.main-footer {
-    background-color: var(--color-dark);
-    color: var(--color-secondary);
+/* --- SEÇÃO DE CONTATO --- */
+.contact {
+    padding: 80px 20px;
     text-align: center;
-    padding: 1.5rem 0;
-    margin-top: 40px;
-    border-top: 5px solid var(--color-primary);
+    background-color: #2c3e50;
+    color: #fff;
 }
 
-/* Estilos para um visual masculino e robusto */
-button, input[type="submit"] {
-    background-color: var(--color-primary);
-    color: var(--color-light);
+.contact h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
     border: none;
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.contact-form button {
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2em;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover, input[type="submit"]:hover {
+.contact-form button:hover {
     background-color: #0056b3;
-    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Media Queries para Responsividade */
+/* --- RODAPÉ --- */
+.footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Media Queries para responsividade */
 @media (max-width: 768px) {
-    .main-header .container {
+    .hero h1 {
+        font-size: 2em;
+    }
+    .hero p {
+        font-size: 1.2em;
+    }
+    .service-cards-container {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
     }
-
-    .main-nav ul {
-        margin-top: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+    .login-form-container {
+        position: static;
+        margin: 20px auto;
+        width: 100%;
+        box-sizing: border-box;
     }
-
-    .main-nav ul li {
-        margin: 5px 10px;
+    .login-form {
+        flex-direction: column;
+        gap: 10px;
     }
-
-    .card-grid {
-        grid-template-columns: 1fr;
+    .login-form input, .login-form button {
+        width: 100%;
+    }
+    .hero-content {
+        margin-top: 20px;
     }
 }

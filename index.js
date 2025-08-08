@@ -1,37 +1,55 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const port  = 3035;
+const port = 3035;
 
-const bodyparser = require("body-parser");
-
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
-
-
-//----- Connect -----
-app.listen(port,function(erro){
+// ---------- alpha test
+app.listen(port,(erro)=>{
     if(erro){
-    console.erro("Sistema enfrentando problema de conexão.");
+        console.log("\n___________________________________________");
+        console.log("      You do not Connect . . .      ");
     }else{
-        console.log("Conectado na porta ",port);
+        console.log("\n___________________________________________");
+        console.log("  You are connect in the port: "+port+" . . .\n\n");
     }
 });
 
+// ---------- ----- Connect to the Bank ----- ----------
+const connection = require("./database/database");
+connection
+    .authenticate()
+    .then(() => {
+        console.log("\n___________________________________________");
+        console.log("      Connecting data x . . .\n\n");
+    })
+    .catch((erro) => { // 'catch' corrigido
+        console.log("\n___________________________________________");
+        console.log("      Connecting fault . . .\n\n");    
+    });
+// ---------- ---------- ---------- ---------- ---------- ----------
 
-//----- Primeiro Teste -----
-app.get("/teste1",function(req,res){
-    res.send("<h1>Sistema em funcionamento ... <h1>");
-});
+// ---------- ---------- ---------- ---------- ---------- ----------
+app.set('view engine','ejs');
+app.use(express.static('public'));
+// ---------- ---------- ---------- ---------- ---------- ----------
 
-//----- Interfaces -----
+// ---------- Home
 app.get("/",(req,res)=>{
-    res.render("index");
+    const sql_entrega = `
+      SELECT placa, marca, modelo, ano
+      FROM veiculos;
+                        `;
+    
+    connection.query(sql_entrega)
+      .then(results =>{
+        // Acesso ao primeiro elemento do array de resultados
+        const veiculosProntos = results[0]; 
+        // Renderiza a página APENAS se a consulta for bem-sucedida
+        res.render('index', { veiculos: veiculosProntos });
+      })
+      .catch((erro =>{
+        console.log("Erro ao buscar veículos prontos: "+erro);
+        // Em caso de erro, você pode renderizar a página com um array vazio
+        // ou uma mensagem de erro, mas deve ser a ÚNICA resposta.
+        res.render('index', { veiculos: [], error: 'Não foi possível carregar os veículos.' });
+      }));
 });
-
-//----- -----
-
-//----- -----
-
-//----- -----
-
-//----- -----
